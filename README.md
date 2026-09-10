@@ -70,6 +70,8 @@ cp data/students.example.json data/students.json
 
 ## Suggested GitHub presentation
 
+Key Technologies: HTML, CSS, JavaScript, Node.js, Express.js, REST API, Excel/CSV integration.
+
 This project is suitable for a CSE mini-project, portfolio repository, internship demonstration, or college lab project. For production deployment, replace the JSON store with PostgreSQL/MySQL and add authentication + role-based access.
 
 ## License
