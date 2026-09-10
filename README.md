@@ -61,6 +61,8 @@ Use these column headings in the first row:
 Student ID is the unique key. Imports update existing records when the Student ID already exists and add new records otherwise.
 
 ## Sample data
+<img width="1312" height="1199" alt="ChatGPT Image Sep 10, 2026, 11_00_17 PM" src="https://github.com/user-attachments/assets/4322ced1-87d5-4220-8bb5-cd0349dd7c3d" />
+
 
 Copy `data/students.example.json` to `data/students.json` to start with demo records:
 
