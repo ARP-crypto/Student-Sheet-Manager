@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Student Sheet Manager - professional student records and spreadsheet dashboard">
+  <title>Student Sheet Manager</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">SS</div>
+        <div><strong>Student Sheet</strong><span>Management System</span></div>
+      </div>
+      <nav class="side-nav">
+        <a class="active" href="#dashboard">Dashboard</a>
+        <a href="#students">Students</a>
+        <a href="#reports">Reports</a>
+      </nav>
+      <div class="side-note">
+        <strong>Built for CSE projects</strong>
+        <span>CRUD • REST API • Excel • CSV • Responsive UI</span>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">ACADEMIC RECORDS</p>
+          <h1>Student Management Dashboard</h1>
+          <p class="muted">Store, search, edit and export student records from one professional workspace.</p>
+        </div>
+        <div class="top-actions">
+          <button class="btn secondary" id="importBtn">Import Excel/CSV</button>
+          <button class="btn primary" id="addBtn">+ Add Student</button>
+          <input hidden type="file" id="fileInput" accept=".xlsx,.xls,.csv">
+        </div>
+      </header>
+
+      <section id="dashboard" class="stats-grid">
+        <article class="stat-card"><span>Total Students</span><strong id="totalCount">0</strong><small>All student records</small></article>
+        <article class="stat-card"><span>Active</span><strong id="activeCount">0</strong><small>Currently enrolled</small></article>
+        <article class="stat-card"><span>Avg. Attendance</span><strong id="attendanceAvg">0%</strong><small>Across all records</small></article>
+        <article class="stat-card"><span>Courses</span><strong id="courseCount">0</strong><small>Unique programs</small></article>
+      </section>
+
+      <section id="students" class="panel">
+        <div class="panel-header">
+          <div>
+            <h2>Student records</h2>
+            <p class="muted">Spreadsheet-style view with search, filters, bulk actions and export.</p>
+          </div>
+          <div class="export-actions">
+            <button class="btn secondary" id="exportCsvBtn">Export CSV</button>
+            <button class="btn secondary" id="exportXlsxBtn">Export Excel</button>
+          </div>
+        </div>
+        <div class="toolbar">
+          <div class="search-wrap"><span>⌕</span><input id="searchInput" type="search" placeholder="Search by name, ID, email or course..."></div>
+          <select id="courseFilter"><option value="">All courses</option></select>
+          <select id="statusFilter"><option value="">All statuses</option><option>Active</option><option>Inactive</option><option>Graduated</option><option>Suspended</option></select>
+          <button class="btn ghost" id="clearFiltersBtn">Clear</button>
+        </div>
+
+        <div id="bulkBar" class="bulk-bar hidden">
+          <span><strong id="selectedCount">0</strong> selected</span>
+          <button class="btn danger" id="bulkDeleteBtn">Delete selected</button>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead><tr>
+              <th class="check-col"><input type="checkbox" id="selectAll"></th>
+              <th>Student ID</th><th>Name</th><th>Age</th><th>Course</th><th>Year</th><th>Section</th><th>Email</th><th>Attendance</th><th>Status</th><th>Actions</th>
+            </tr></thead>
+            <tbody id="tableBody"></tbody>
+          </table>
+          <div id="emptyState" class="empty-state hidden"><div class="empty-icon">▦</div><h3>No students found</h3><p>Try a different search or add a new student record.</p></div>
+        </div>
+      </section>
+
+      <section id="reports" class="report-grid">
+        <article class="panel report-card"><h2>Attendance distribution</h2><div id="attendanceBars" class="bar-chart"></div></article>
+        <article class="panel report-card"><h2>Course breakdown</h2><div id="courseBars" class="bar-chart"></div></article>
+      </section>
+      <footer>Student Sheet Manager • Built with Node.js, Express and vanilla JavaScript</footer>
+    </main>
+  </div>
+
+  <div id="modal" class="modal hidden" aria-hidden="true">
+    <div class="modal-card">
+      <div class="modal-head"><div><p class="eyebrow">STUDENT RECORD</p><h2 id="modalTitle">Add Student</h2></div><button class="icon-btn" id="closeModal">×</button></div>
+      <form id="studentForm">
+        <div class="form-grid">
+          <label>Student ID<input name="id" required maxlength="40" placeholder="RA2511003020123"></label>
+          <label>Full Name<input name="name" required maxlength="80" placeholder="Student name"></label>
+          <label>Age<input name="age" required type="number" min="10" max="100"></label>
+          <label>Gender<select name="gender"><option>Male</option><option>Female</option><option>Other</option></select></label>
+          <label>Course<input name="course" required maxlength="60" placeholder="B.Tech CSE"></label>
+          <label>Year<input name="year" required type="number" min="1" max="8"></label>
+          <label>Section<input name="section" maxlength="5" placeholder="C"></label>
+          <label>Email<input name="email" type="email" placeholder="student@example.com"></label>
+          <label>Phone<input name="phone" maxlength="20" placeholder="+91 90000 00000"></label>
+          <label>City<input name="city" maxlength="60" placeholder="Chennai"></label>
+          <label>Attendance %<input name="attendance" required type="number" min="0" max="100" step="0.1"></label>
+          <label>Status<select name="status"><option>Active</option><option>Inactive</option><option>Graduated</option><option>Suspended</option></select></label>
+        </div>
+        <div id="formError" class="form-error hidden"></div>
+        <div class="modal-actions"><button type="button" class="btn secondary" id="cancelBtn">Cancel</button><button class="btn primary" type="submit">Save Student</button></div>
+      </form>
+    </div>
+  </div>
+  <div id="toast" class="toast hidden"></div>
+  <script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

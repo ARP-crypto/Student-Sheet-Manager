@@ -1,0 +1,34 @@
+[
+  {
+    "id": "RA2511003020123",
+    "name": "Amulya Ratna Pradhan",
+    "age": 18,
+    "gender": "Male",
+    "course": "B.Tech CSE",
+    "year": 1,
+    "section": "C",
+    "email": "amulya@example.com",
+    "phone": "+91 90000 00000",
+    "city": "Chennai",
+    "attendance": 92,
+    "status": "Active",
+    "createdAt": "2026-09-10T10:00:00.000Z",
+    "updatedAt": "2026-09-10T10:00:00.000Z"
+  },
+  {
+    "id": "RA2511003020124",
+    "name": "Priya Sharma",
+    "age": 19,
+    "gender": "Female",
+    "course": "B.Tech CSE",
+    "year": 1,
+    "section": "A",
+    "email": "priya@example.com",
+    "phone": "+91 90000 00001",
+    "city": "Bengaluru",
+    "attendance": 88,
+    "status": "Active",
+    "createdAt": "2026-09-09T10:00:00.000Z",
+    "updatedAt": "2026-09-09T10:00:00.000Z"
+  }
+]
