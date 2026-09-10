@@ -1,0 +1,13 @@
+student-sheet-manager/
+├── public/
+│   ├── index.html
+│   ├── styles.css
+│   └── app.js
+├── data/
+│   └── students.example.json
+├── server.js
+├── package.json
+├── README.md
+├── LICENSE
+├── .gitignore
+└── .env.example
