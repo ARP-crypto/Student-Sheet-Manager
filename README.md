@@ -1,6 +1,6 @@
 # Student Sheet Manager
 
-A professional, GitHub-ready student data management website for CSE/engineering students. It combines a clean dashboard with a spreadsheet-style student register and a lightweight REST API.
+A student data management website for storing students data. It combines a clean dashboard with a spreadsheet-style student register and a lightweight REST API.
 
 ## Features
 
